@@ -37,14 +37,14 @@ public class EmployeeTest {
 		System.out.println("	4: By floor number");
 		System.out.println("	5: By wing number");
 		Scanner scan = new Scanner(System.in);
-		System.out.print("> ");
 		
 		int choice = 0;
 		boolean valid = false;
 		while(!valid) {
-			if(!scan.hasNextInt())
-				System.out.print("\nNeeds to be a number 1-4. > ");
-			else {
+			System.out.print("Choose 1-5. > ");
+			if(!scan.hasNextInt()) {
+				scan.nextLine();
+			} else {
 				choice = scan.nextInt();
 				if (choice >= 1 && choice <= 5)
 					valid = true;
