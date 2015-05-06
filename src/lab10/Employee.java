@@ -159,18 +159,51 @@ public class Employee implements Comparable<Employee> {
 			}
 		};
 	
-	public static final Comparator<Employee> OfficeComparator = new
+	public static final Comparator<Employee> FloorComparator = new
 		Comparator<Employee>() {
 			/**
-			 * Compares the Office numbers of 2 employees
+			 * Compares the floor numbers of 2 employees
 			 * @param e1 First employee to compare
 			 * @param e2 Second employee to compare
-			 * @return 
+			 * @return Negative integer if first floor is lower than second,
+			 * 0 if floors are equal, and positive if first is higher
 			 */
 			public int compare(Employee e1, Employee e2) {
-				// They share an office I guess
-				return e1.office - e2.office;
+				String o1 = "" + e1.office;
+				char floor1Char = o1.charAt(0);
+				String floor1String = "" + floor1Char;
+				int floor1 = Integer.parseInt(floor1String);
+				
+				String o2 = "" + e2.office;
+				char floor2Char = o2.charAt(0);
+				String floor2String = "" + floor2Char;
+				int floor2 = Integer.parseInt(floor2String);
+				
+				return floor1 - floor2;
 			}
 		};
 	
+	public static final Comparator<Employee> WingComparator = new 
+		Comparator<Employee>() {
+			/**
+			 * Compares the wing (department) numbers of 2 employee objects
+			 * @param e1 First employee to compare
+			 * @param e2 Second employee to compare
+			 * @return Negative integer if first is smaller than second, 0 
+			 * if wings are equal, positive integer if first is bigger
+			 */
+			public int compare(Employee e1, Employee e2) {
+				String o1 = "" + e1.office;
+				char wing1Char = o1.charAt(1);
+				String wing1String = "" + wing1Char;
+				int wing1 = Integer.parseInt(wing1String);
+				
+				String o2 = "" + e2.office;
+				char wing2Char = o2.charAt(1);
+				String wing2String = "" + wing2Char;
+				int wing2 = Integer.parseInt(wing2String);
+				
+				return wing1 - wing2;
+			}
+		};
 }
